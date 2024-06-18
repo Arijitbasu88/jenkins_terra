@@ -31,11 +31,11 @@ data "aws_ami" "ubuntu" {
 resource "aws_instance" "instance" {
   ami           = data.aws_ami.ubuntu.id
   instance_type = "t3.micro"
-  key_name="user25_deployer-key"
+  key_name="user1_deployer-key"
   count=4
   tags = {
-      Name="user25-instance-${count.index}",
-      role=count.index==0?"user25-lb": (count.index<3?"user25-web":"user25-backend")
+      Name="user1-instance-${count.index}",
+      role=count.index==0?"user25-lb": (count.index<3?"user1-web":"user1-backend")
   }
 }
 
